@@ -15,6 +15,11 @@ class Form extends React.Component {
     });
   };
 
+  onSubmit = e => {
+    e.preventDefault();
+    console.log(this.state);
+  };
+
   render() {
     return (
       <form>
@@ -24,6 +29,7 @@ class Form extends React.Component {
           value={this.state.firstName}
           onChange={e => this.change(e)}
         />
+        <br />
 
         <input
           name="lastName"
@@ -31,6 +37,7 @@ class Form extends React.Component {
           value={this.state.lastName}
           onChange={e => this.change(e)}
         />
+        <br />
 
         <input
           name="email"
@@ -38,6 +45,7 @@ class Form extends React.Component {
           value={this.state.email}
           onChange={e => this.change(e)}
         />
+        <br />
 
         <input
           name="phoneNumber"
@@ -45,6 +53,7 @@ class Form extends React.Component {
           value={this.state.phoneNumber}
           onChange={e => this.change(e)}
         />
+        <br />
 
         <input
           name="notes"
@@ -52,6 +61,9 @@ class Form extends React.Component {
           value={this.state.notes}
           onChange={e => this.change(e)}
         />
+        <br />
+
+        <button onClick={e => this.onSubmit(e)}>Submit</button>
       </form>
     );
   }
