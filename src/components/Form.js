@@ -10,6 +10,7 @@ class Form extends React.Component {
   };
 
   change = e => {
+    this.props.onChange({ [e.target.name]: e.target.value });
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -17,7 +18,21 @@ class Form extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    // this.props.onSubmit(this.state);
+    this.setState({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      notes: ""
+    });
+    this.props.onChange({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      notes: ""
+    });
   };
 
   render() {
