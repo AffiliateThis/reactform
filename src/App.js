@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import "./App.css";
 import Form from "./components/Form";
+require("dotenv").config();
 
 class App extends Component {
   state = {

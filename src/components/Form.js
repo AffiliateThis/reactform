@@ -1,4 +1,5 @@
 import React from "react";
+require("dotenv").config();
 
 class Form extends React.Component {
   state = {
@@ -6,7 +7,7 @@ class Form extends React.Component {
     lastName: "",
     email: "",
     phoneNumber: "",
-    notes: ""
+    message: ""
   };
 
   change = e => {
@@ -24,14 +25,14 @@ class Form extends React.Component {
       lastName: "",
       email: "",
       phoneNumber: "",
-      notes: ""
+      message: ""
     });
     this.props.onChange({
       firstName: "",
       lastName: "",
       email: "",
       phoneNumber: "",
-      notes: ""
+      message: ""
     });
   };
 
@@ -39,6 +40,7 @@ class Form extends React.Component {
     return (
       <form>
         <input
+          id="fn"
           name="firstName"
           placeholder="First Name"
           value={this.state.firstName}
@@ -47,6 +49,7 @@ class Form extends React.Component {
         <br />
 
         <input
+          id="ln"
           name="lastName"
           placeholder="Last Name"
           value={this.state.lastName}
@@ -55,6 +58,7 @@ class Form extends React.Component {
         <br />
 
         <input
+          id="email"
           name="email"
           placeholder="Email"
           value={this.state.email}
@@ -63,6 +67,7 @@ class Form extends React.Component {
         <br />
 
         <input
+          id="pn"
           name="phoneNumber"
           placeholder="Phone Number"
           value={this.state.phoneNumber}
@@ -71,9 +76,10 @@ class Form extends React.Component {
         <br />
 
         <input
-          name="notes"
+          id="message"
+          name="message"
           placeholder="Please add information regarding your inquiry"
-          value={this.state.notes}
+          value={this.state.message}
           onChange={e => this.change(e)}
         />
         <br />
@@ -82,6 +88,48 @@ class Form extends React.Component {
       </form>
     );
   }
-}
+
+
+ajax({
+  type: POST,
+  url: "https://api.hubapi.com/contacts/v1/contact/?hapikey=" +SECRET_KEY,
+  data: data
+});
+
+
+  var data = [
+    {
+      property: "firstname",
+      value: ""
+    },
+    {
+      property: "lastname",
+      value: ""
+    },
+
+    {
+      property: "company",
+      value: ""
+    },
+    {
+      property: "phone",
+      value: ""
+    },
+
+    {
+      property: "email",
+      value: ""
+    },
+
+    {
+      property: "message",
+      value: ""
+    }
+  ];
+};
+
+// }
+
+// }
 
 export default Form;
